@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neil Bryan Romero — Portfolio</title>
+  <meta name="description" content="Portfolio of Neil Bryan Romero — digital projects, business systems, and product work based in Davao, Philippines." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --surface: #12151a;
+      --surface-2: #1a1e26;
+      --border: #2a303c;
+      --text: #e8eaed;
+      --muted: #9aa3b2;
+      --accent: #3d8bfd;
+      --accent-soft: rgba(61, 139, 253, 0.12);
+      --green: #34d399;
+      --radius: 14px;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 13, 16, 0.75);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    header.scrolled { border-bottom-color: var(--border); }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-size: 1.05rem;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .nav-cta:hover { filter: brightness(1.08); }
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+      display: grid;
+      gap: 2rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+    }
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 6vw, 3.75rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      max-width: 16ch;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--muted);
+    }
+    .hero-lead {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 42ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.15rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { filter: brightness(1.08); }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--surface); }
+
+    section { padding: 4rem 0; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .muted { color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+    .about-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+    .about-card p { color: var(--muted); font-size: 0.95rem; }
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .stat {
+      background: var(--surface-2);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+    .stat span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .skill-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.65rem;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .project {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .project:hover {
+      border-color: #3a4556;
+      transform: translateY(-2px);
+    }
+    .project-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .project h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    .project p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 58ch;
+    }
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+    }
+    .project-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.75rem;
+      min-width: 120px;
+    }
+    .project-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .project-link:hover { text-decoration: underline; }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+      border-left: 2px solid var(--border);
+      padding-left: 1.25rem;
+      margin-left: 0.35rem;
+    }
+    .job {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+    }
+    .job::before {
+      content: "";
+      position: absolute;
+      left: -1.55rem;
+      top: 1.45rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .job-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.35rem 1rem;
+      margin-bottom: 0.35rem;
+    }
+    .job h3 { font-size: 1.05rem; }
+    .job-role { color: var(--muted); font-size: 0.9rem; }
+    .job-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .job ul {
+      margin-top: 0.6rem;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .job li { margin-bottom: 0.25rem; }
+
+    .contact-box {
+      background: linear-gradient(160deg, var(--surface) 0%, #151a24 100%);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .contact-box h2 { margin-bottom: 0.5rem; }
+    .contact-box p { color: var(--muted); margin-bottom: 1.25rem; }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      font-size: 0.92rem;
+      transition: border-color 0.15s;
+    }
+    .contact-links a:hover { border-color: var(--accent); }
+    .contact-links .icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.25rem 1.25rem;
+        gap: 0.85rem;
+      }
+      .menu-btn { display: grid; place-items: center; }
+      .about-grid,
+      .contact-box,
+      .project {
+        grid-template-columns: 1fr;
+      }
+      .project-side {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      h1 { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header">
+    <nav class="wrap">
+      <a class="logo" href="#">Neil Bryan <span>Romero</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a class="nav-cta" href="#contact">Contact</a></li>
+      </ul>
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="eyebrow">Open to opportunities</div>
+      <h1>Building digital products &amp; <em>practical systems</em></h1>
+      <p class="hero-lead">
+        I’m Neil Bryan Romero — based in Davao, Philippines. I design and ship web experiences,
+        brand assets, and business platforms across automotive, digital products, and markets.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View work</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="https://github.com/neilbryanromero-web" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <p class="section-label">About</p>
+        <h2>Who I am</h2>
+        <div class="about-grid">
+          <div>
+            <p class="muted" style="margin-bottom: 1rem;">
+              I run and build digital-facing businesses while staying hands-on with product design,
+              web interfaces, and go-to-market systems. My work sits at the intersection of
+              clear branding, usable websites, and real commercial outcomes.
+            </p>
+            <p class="muted">
+              I’m looking for roles or collaborations where I can contribute to product delivery,
+              frontend implementation, digital operations, or growth-focused web projects —
+              especially teams that value practical execution over pure theory.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>At a glance</h3>
+            <p>Davao-based · Business builder · Digital product work · Crypto &amp; markets awareness</p>
+            <div class="stat-row">
+              <div class="stat">
+                <strong>NDM</strong>
+                <span>Active brand</span>
+              </div>
+              <div class="stat">
+                <strong>PH</strong>
+                <span>Based in Davao</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <p class="section-label">Skills</p>
+        <h2>What I work with</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Web &amp; Product</h3>
+            <div class="tags">
+              <span class="tag">HTML / CSS</span>
+              <span class="tag">Responsive UI</span>
+              <span class="tag">Landing pages</span>
+              <span class="tag">GitHub</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Design &amp; Brand</h3>
+            <div class="tags">
+              <span class="tag">Logo systems</span>
+              <span class="tag">Visual identity</span>
+              <span class="tag">AI image tools</span>
+              <span class="tag">Asset production</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Business Systems</h3>
+            <div class="tags">
+              <span class="tag">E-commerce flows</span>
+              <span class="tag">Digital products</span>
+              <span class="tag">Market positioning</span>
+              <span class="tag">Ops setup</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Markets</h3>
+            <div class="tags">
+              <span class="tag">Crypto awareness</span>
+              <span class="tag">Forex concepts</span>
+              <span class="tag">Product research</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <p class="section-label">Projects</p>
+        <h2>Selected work</h2>
+        <div class="projects-grid">
+          <article class="project">
+            <div>
+              <p class="project-badge">Business · Web</p>
+              <h3>Nexus Drive Markets</h3>
+              <p>
+                One-page brand site for a Davao-based business covering genuine car parts,
+                digital products, and market-facing services. Built as a clean static template
+                with strong visual hierarchy, clear service sections, and a contact flow ready
+                for production wiring.
+              </p>
+              <div class="project-meta">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">Brand system</span>
+                <span class="tag">Static site</span>
+              </div>
+            </div>
+            <div class="project-side">
+              <span class="tag">2026</span>
+              <a class="project-link" href="https://github.com/neilbryanromero-web/nexus-drive-markets" target="_blank" rel="noopener">View repo →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div>
+              <p class="project-badge">Design · Branding</p>
+              <h3>Brand &amp; visual asset work</h3>
+              <p>
+                Logo concepts, visual identity experiments, and AI-assisted image production
+                for business and creative use cases — focused on clarity, consistency, and
+                practical application across web and social surfaces.
+              </p>
+              <div class="project-meta">
+                <span class="tag">Identity</span>
+                <span class="tag">AI tools</span>
+                <span class="tag">Visual systems</span>
+              </div>
+            </div>
+            <div class="project-side">
+              <span class="tag">Ongoing</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div>
+              <p class="project-badge">Personal · Systems</p>
+              <h3>Portfolio site (this page)</h3>
+              <p>
+                Lightweight, responsive personal portfolio designed for job applications —
+                fast load, clear narrative, and easy to host on GitHub Pages or any static host.
+              </p>
+              <div class="project-meta">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">Responsive</span>
+              </div>
+            </div>
+            <div class="project-side">
+              <span class="tag">2026</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <p class="section-label">Experience</p>
+        <h2>Background</h2>
+        <div class="timeline">
+          <article class="job">
+            <div class="job-top">
+              <div>
+                <h3>Nexus Drive Markets</h3>
+                <p class="job-role">Founder · Digital &amp; operations</p>
+              </div>
+              <span class="job-date">2025 — Present</span>
+            </div>
+            <ul>
+              <li>Built and maintain the brand website and digital presence</li>
+              <li>Coordinate product positioning across car parts and digital offers</li>
+              <li>Handle customer-facing flows, content, and visual assets</li>
+            </ul>
+          </article>
+          <article class="job">
+            <div class="job-top">
+              <div>
+                <h3>Independent digital work</h3>
+                <p class="job-role">Design, web, and tooling</p>
+              </div>
+              <span class="job-date">Ongoing</span>
+            </div>
+            <ul>
+              <li>Logo and brand asset production for personal and client-style projects</li>
+              <li>Experimentation with AI image and video tools for practical creative output</li>
+              <li>Static web builds and simple product pages</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div>
+            <p class="section-label">Contact</p>
+            <h2>Let’s talk</h2>
+            <p>
+              Open to full-time roles, contract work, and collaborations.
+              Best reached by email or GitHub for project-related messages.
+            </p>
+            <a class="btn btn-primary" href="mailto:hello@example.com">Email me</a>
+          </div>
+          <div class="contact-links">
+            <a href="https://github.com/neilbryanromero-web" target="_blank" rel="noopener">
+              <span class="icon">GH</span>
+              github.com/neilbryanromero-web
+            </a>
+            <a href="https://x.com/romero_bry29930" target="_blank" rel="noopener">
+              <span class="icon">X</span>
+              @romero_bry29930
+            </a>
+            <a href="mailto:hello@example.com">
+              <span class="icon">@</span>
+              Replace with your email
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© <span id="year"></span> Neil Bryan Romero</span>
+    <span>Davao, Philippines</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const header = document.getElementById("site-header");
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 8);
+    });
+
+    const menuBtn = document.getElementById("menu-btn");
+    const navLinks = document.getElementById("nav-links");
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+    navLinks.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+  </script>
+</body>
+</html>
